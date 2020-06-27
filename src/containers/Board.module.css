@@ -78,6 +78,7 @@ button:hover {
 
 .pulse {
     border-radius: 10px 10px 0 0;
+    background-color: darkcyan;
     box-shadow: 0 0 0 rgb(81, 255, 0);
     animation: pulse 2s infinite;
   }
