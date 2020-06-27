@@ -12,7 +12,7 @@ const cards = (props) => {
         const condition = [!job.dismissed, job.applied && !job.dismissed]
         return condition[props.status] ? (<Card
                             key={job._id}
-                            dismiss={props.dismiss} 
+                            dismissClick={props.dismissClick} 
                             appliedClick={props.appliedClick}
                             index={index}
                             job={job}

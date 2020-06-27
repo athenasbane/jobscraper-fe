@@ -31,6 +31,7 @@ h3 {
 
 .appliedBtn {
     border-radius: 0 0 0 10px;
+    background-color: darkgray;
 }
 
 .dismissBtn {
@@ -45,5 +46,6 @@ a {
 
 .appliedBtnActive {
     border-radius: 0 0 0 10px;
+    color: white;
     background-color: rgb(15, 235, 81);
 }

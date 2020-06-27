@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ConfirmButton from '../../ConfirmButton/ConfirmButton'
+
 import classes from './Card.module.css';
 
 const card = (props) => (
@@ -13,7 +15,16 @@ const card = (props) => (
             <button 
                 className={props.job.applied ? classes.appliedBtnActive : classes.appliedBtn} 
                 onClick={() => props.appliedClick(props.index)}>Applied</button>
-            <button className={classes.dismissBtn} onClick={() => props.dismiss(props.index)}>Dismiss</button>
+            {/* create a second click to dismiss */}
+            
+            <ConfirmButton 
+            job={props.job}
+            btnConfirm={props.btnConfirm}
+            dismissClick={props.dismissClick}
+            index={props.index}/>
+            {/* <button className={classes.dismissBtn} 
+            onClick={() => props.dismiss(props.index)}
+            >Dismiss</button> */}
         </div>
         
     </div>
