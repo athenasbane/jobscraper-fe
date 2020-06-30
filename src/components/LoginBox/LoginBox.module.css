@@ -6,7 +6,7 @@
     height: 400px;
     border: 1px solid black;
     background-color: rgb(58, 142, 199);
-    opacity: 80%;
+    opacity: 0.8;
     border-radius: 0 0 10px 10px;
 }
 
@@ -21,7 +21,7 @@
     border-radius: 10px;
     text-align: center;
     color: green;
-    opacity: 90%;
+    opacity: 0.9;
     cursor: pointer;
 }
 
@@ -36,6 +36,6 @@
     border: 3px solid rgb(255, 0, 0);
     text-align: center;
     color: rgb(216, 19, 19);
-    opacity: 90%;
+    opacity: 0.9;
     cursor: pointer;
 }
