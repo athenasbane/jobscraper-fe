@@ -16,12 +16,15 @@ const card = (props) => (
                 className={props.job.applied ? classes.appliedBtnActive : classes.appliedBtn} 
                 onClick={() => props.appliedClick(props.index)}>Applied</button>
             {/* create a second click to dismiss */}
+            {props.status >= 6 ? (
+                <ConfirmButton 
+                job={props.job}
+                btnConfirm={props.btnConfirm}
+                dismissClick={props.dismissClick}
+                index={props.index}/>
+            ) : ( <button className={classes.dismissBtn} onClick={() => props.saveClick(props.index)}>Save</button> )}
             
-            <ConfirmButton 
-            job={props.job}
-            btnConfirm={props.btnConfirm}
-            dismissClick={props.dismissClick}
-            index={props.index}/>
+            {/*  */}
             {/* <button className={classes.dismissBtn} 
             onClick={() => props.dismiss(props.index)}
             >Dismiss</button> */}

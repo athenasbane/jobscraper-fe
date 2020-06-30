@@ -1,0 +1,43 @@
+.Register {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    opacity: 100%;
+    color: black;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-emphasis: bold;
+}
+
+.Register input {
+    border: none;
+    width: 98.7%;
+    height: 80%;
+}
+
+.Register input:focus {
+    outline: none;
+}
+
+.Register label {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    
+}
+
+.Register button {
+    margin-top: 30px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.BottomButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 9px 9px;
+}
