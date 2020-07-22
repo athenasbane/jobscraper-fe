@@ -1,26 +1,27 @@
 .SearchBox {
     position: absolute;
+    top: 40px;
     display: flex;
-    left: 10%;
     flex-direction: column;
-    top: 10%;
     text-align: center;
     justify-content: center;
-    width: 80%;
-    height: 80%;
-    background-color: grey;
+    justify-items: center;
+    width: 100%;
+    height: 90%;
+    background-color: white;
     border: 1px solid black;
-    border-radius: 0 0 50px 50px;
     border-top: 5px solid black;
 }
 
 .SearchBox button {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    bottom: 30px;
     height: 30%;
-    border-radius: 0 0 50px 50px;
     width: 100%;
     font-size: 1.5rem;
+    border-radius: 1px 1px 1px 1px;
+    border: 0px;
+    background-color: aquamarine;
 
 }
 
@@ -40,23 +41,29 @@
     font-size: 1.5rem;
     width: 90%;
     height: 30%;
-    border: none none none 3px solid black;
+    outline: 0;
+    border-radius: 0px 0px 0px 0px;
+    border-width: 0 0 2px;
+    border-color: rgb(13, 206, 231);
 }
 
 .SearchBox input:focus {
     outline: none;
 }
 
+.SpinnerContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
 .LoadingSpinner {
-    position: absolute;
-    bottom: 0;
-    left: 25%;
-    align-content: center;
-    display: flex;
-    flex-direction: column;
-    height: 30%;
-    width: 50%;
+    /* position: relative;
+    left: 50%; */
+    bottom: 50px;
+    height: 50px;
+    width: 50px;
 
 }
 

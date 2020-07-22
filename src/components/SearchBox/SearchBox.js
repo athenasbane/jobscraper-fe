@@ -15,9 +15,12 @@ const searchBox = (props) => (
                 <input type="text" value={props.locationValue} onChange={props.locationChange}/>
             </label>
             {!props.loading ? (<button onClick={props.searchSubmit}>Search</button>) : (
-            <div className={classes.LoadingSpinner}>
-                <object type="image/svg+xml" data={Spinner}>Spinner</object>
-            </div>)}
+            <div className={classes.SpinnerContainer}>
+                <div className={classes.LoadingSpinner}>
+                    <object type="image/svg+xml" data={Spinner}>Spinner</object>
+                </div>
+            </div>
+            )}
     </div>
 )
 

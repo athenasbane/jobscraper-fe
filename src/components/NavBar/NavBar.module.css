@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: #e4e4e4;
+    position: relative;
+
+}
+
+.navItem { 
+    font-family: 'Lobster', cursive;
+    margin-bottom: 15px;
+    
+}
+
+.navButtonsBox {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 400px;
+
+}
+
+.navButtonsBox button {
+    height: 30px;
+    flex-direction: row;
+    border: none;
+    
+}
+
+.appliedJobsBtn {
+    color: white;
+    text-emphasis: bold;
+    background-color: #14da77a8;
+    border-radius: 10px 10px 0 0 ;
+}
+
+button:focus {
+    outline: none;
+    border: none;
+}
+
+button:hover {
+    background-color: aqua;
+}
+
+
+.pulse {
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(13, 206, 231);
+    box-shadow: 0 0 0 rgb(243, 243, 243);
+    animation: pulse 2s infinite;
+    color: white;
+  }
+  .pulse:hover {
+    animation: none;
+  }
+
+
+  @-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgb(81, 255, 0);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgb(140, 151, 135);
+      box-shadow: 0 0 0 0 rgb(236, 235, 228);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+  }

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-import BackDrop from '../hoc/BackDrop/BackDrop'
-
+import BackDrop from '../hoc/BackDrop/BackDrop';
+import NavBar from '../components/NavBar/NavBar';
 
 import classes from './Board.module.css';
 import PageSelector from '../components/PageSelector/PageSelector';
-
 
 
 class Board extends Component {
@@ -17,16 +16,17 @@ class Board extends Component {
         page: 3,
         backDrop: false,
         searchTitle: 'Recruitment',
-        searchLocation: 'London',
+        searchLocation: 'Leeds',
         loading: false,
         loggedin: false,
         loginMsg: [],
         loginState: 0,
         user: {},
         userJobs: [],
-        emptyMsg: "There's Nothing Here! Please run a search or change your search terms"
-        
-
+        emptyMsg: "There's Nothing Here! Please run a search or change your search terms",
+        menuToggle: false,
+        menuClass: classes.navButtonsBox
+    
     }
 
     loginUserHandler = (username, password) => {
@@ -82,7 +82,10 @@ class Board extends Component {
     }
 
     searchBtnHandler = () => {
-        this.setState({ page: 3})
+        this.setState({ page: 3,
+            menuToggle: false,
+            menuClass: classes.navButtonsBox
+        })
     }
 
     dismissJobHandler = (index) => {
@@ -162,7 +165,10 @@ class Board extends Component {
         if(!this.state.loggedin) {
             let loginMsg = this.state.loginMsg
             loginMsg.push('Please login to track jobs you have applied for')
-            this.setState({ page: 5, loginMsg })
+            this.setState({ page: 5, 
+                            loginMsg,
+                            menuToggle: false,
+                            menuClass: classes.navButtonsBox })
             return
         }
 
@@ -184,13 +190,17 @@ class Board extends Component {
             const jobUpdate = response.data.map(job => {
                 return {...job, timesPressed: 0}
             })
-            this.setState({ userJobs: jobUpdate, page: 7 })
+            this.setState({ userJobs: jobUpdate, 
+                page: 7 })
 
         })
     }
 
     activeBtnHandler = () => {
-        this.setState({ page: 0})
+        this.setState({ page: 0,
+                        menuToggle: false,
+                        menuClass: classes.navButtonsBox
+        })
     }
 
     savedBtnHandler = () => {
@@ -198,7 +208,11 @@ class Board extends Component {
         if(!this.state.loggedin) {
             let loginMsg = this.state.loginMsg
             loginMsg.push('Please Login to do that')
-            this.setState({ page: 5, loginMsg })
+            this.setState({ page: 5, 
+                            loginMsg,
+                            menuToggle: false,
+                            menuClass: classes.navButtonsBox
+                        })
             return
         }
 
@@ -228,11 +242,15 @@ class Board extends Component {
     
 
     aboutBtnHandler = () => {
-        this.setState({ page: 4 })
+        this.setState({ page: 4,
+            menuToggle: false,
+            menuClass: classes.navButtonsBox })
     }
     
     loginBtnHandler = () => {
-        this.setState({ page: 5 })
+        this.setState({ page: 5,
+            menuToggle: false,
+            menuClass: classes.navButtonsBox })
     }
 
     dismissClickHandler = (index) => {
@@ -290,8 +308,61 @@ class Board extends Component {
 
         this.setState({ newState, backDrop: false })
     }
+
+    menuToggleHandler = () => {
+        
+        this.setState({menuToggle: !this.state.menuToggle})
+        if(this.state.menuToggle) {
+            this.setState({
+                        menuClass: classes.menuOpen
+                            })
+        } else {
+            this.setState({menuClass: classes.navButtonsBox})
+        }
+    }
     
     render() {    
+        const isMobile = window.innerWidth < 480;
+        let nav = (<NavBar 
+            searchBtnHandler={this.searchBtnHandler}
+            aboutBtnHandler={this.aboutBtnHandler}
+            activeBtnHandler={this.activeBtnHandler}
+            savedBtnHandler={this.savedBtnHandler}
+            appliedBtnHandler={this.appliedBtnHandler}
+            loginBtnHandler={this.loginBtnHandler}
+        />)
+        if (isMobile) {
+            nav = (
+            <div >
+                <div className={classes.navItem}>
+                    <h1>Beedge Job Search Helper</h1>
+                    <button className={classes.menuToggleBtn} 
+                    onClick={this.menuToggleHandler}>Menu</button>
+                </div>  
+                <div className={this.state.menuClass}>
+                    <button 
+                        className={classes.appliedJobsBtn} 
+                        onClick={this.searchBtnHandler}>Search</button>
+                    <button 
+                        className={classes.pulse} 
+                        onClick={this.aboutBtnHandler}>How to Use</button>
+                    <button 
+                        className={classes.appliedJobsBtn} 
+                        onClick={this.activeBtnHandler} >Today's Jobs</button>
+                    <button 
+                        className={classes.appliedJobsBtn} 
+                        onClick={this.savedBtnHandler}>Saved</button>
+                    <button 
+                        className={classes.appliedJobsBtn} 
+                        onClick={this.appliedBtnHandler}>Applied</button>
+                    <button 
+                        className={classes.appliedJobsBtn}
+                        onClick={this.loginBtnHandler} 
+                        >Login</button>
+                    <BackDrop clearCount={this.menuToggleHandler} />
+                </div>
+            </div>)
+        }
 
         return (
             <div className={classes.Board} >
@@ -299,34 +370,7 @@ class Board extends Component {
                                            clearCount={this.clearCountHandler} 
                                             />) : null}
                 <header>
-                    <nav>
-                        <div className={classes.container}>
-                            <div className={classes.navItem}>
-                                <h1>Beedge Job Search Helper</h1>
-                            </div>
-                            <div className={classes.navButtonsBox}>
-                                <button 
-                                    className={classes.appliedJobsBtn} 
-                                    onClick={this.searchBtnHandler}>Search</button>
-                                <button 
-                                    className={classes.pulse} 
-                                    onClick={this.aboutBtnHandler}>How to Use</button>
-                                <button 
-                                    className={classes.pulse} 
-                                    onClick={this.activeBtnHandler} >Today's Jobs</button>
-                                <button 
-                                    className={classes.appliedJobsBtn} 
-                                    onClick={this.savedBtnHandler}>Saved</button>
-                                <button 
-                                    className={classes.appliedJobsBtn} 
-                                    onClick={this.appliedBtnHandler}>Applied</button>
-                                <button 
-                                    className={classes.appliedJobsBtn}
-                                    onClick={this.loginBtnHandler} 
-                                    >Login</button>
-                            </div>
-                        </div>
-                    </nav>
+                    {nav}
                 </header>
         
                 <div className={classes.boxWithShadow} onClick={this.clearHandler}>
@@ -352,9 +396,7 @@ class Board extends Component {
                     
                     />          
                 </div>
-                <footer>
-                    <h3>Made by Athena's Bane</h3>
-                </footer>
+
             </div>
         )
     }

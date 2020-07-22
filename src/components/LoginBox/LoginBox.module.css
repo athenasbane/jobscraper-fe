@@ -1,9 +1,10 @@
 .LoginBox {
-    position: absolute;
+    display: flexbox;
+    margin-top: 70px;
     top: 20%;
     left: 40%;
-    width: 300px;
-    height: 400px;
+    width: 80%;
+    height: 80%;
     border: 1px solid black;
     background-color: rgb(58, 142, 199);
     opacity: 0.8;
@@ -11,8 +12,8 @@
 }
 
 .LoginMsgBox {
-    position: fixed;
-    top: 20%;
+    position: relative;
+    top: -10%;
     left: 55%;
     width: 200px;
     height: 75px;
@@ -27,7 +28,7 @@
 
 .ErrMsgBox {
     position: fixed;
-    top: 20%;
+    top: -10%;
     left: 30%;
     width: 200px;
     height: 75px;
